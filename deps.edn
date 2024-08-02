@@ -1,0 +1,2 @@
+{:sources ["src", "test"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.3"}}}
