@@ -1,6 +1,6 @@
-(ns tic-tac-toe-test
+(ns tic-tac-toe.core-test
   (:require [clojure.test :refer [deftest testing is are]]
-            [tic-tac-toe :as game]))
+            [tic-tac-toe.core :as game]))
 
 (deftest tic-tac-toe-game-test
   (testing "the finite set of winning combinations"
@@ -57,6 +57,16 @@
                   :o nil :x]
                  [:o nil :x
                   nil :x :o
-                  :x nil nil])))
+                  :x nil nil]))
+  (testing "look for the winner when the game is not over"
+    (let [board [:o :x :x
+                 :x :o :o
+                 :x :o nil]]
+      (is (not (game/find-game-winner board)))))
+  (testing "look for the winner when it is a draw"
+    (let [board [:o :x :x
+                 :x :o :o
+                 :x :o :x]]
+      (is (game/find-game-winner board)))))
 
 

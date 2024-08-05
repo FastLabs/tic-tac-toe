@@ -1,4 +1,4 @@
-(ns tic-tac-toe)
+(ns tic-tac-toe.core)
 
 (def win-sets
   [[0 1 2]
