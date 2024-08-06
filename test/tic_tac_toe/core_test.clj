@@ -12,7 +12,7 @@
              [2 5 8]
              [0 4 8]
              [2 4 6]}
-           (set game/win-sets))))
+           (set game/win-combinations))))
 
   (testing "board allocation"
     (is (= [nil nil nil

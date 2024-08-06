@@ -1,6 +1,6 @@
 (ns tic-tac-toe.core)
 
-(def win-sets
+(def win-combinations
   [[0 1 2]
    [3 4 5]
    [6 7 8]
@@ -21,12 +21,10 @@
 (defn new-game-board []
   (vec (repeat 9 nil)))
 
-
 (defn board-full? [board]
   (not-any? nil? board))
 
 (defn find-game-winner [board]
-  (let [game-winner (some #(find-sequence-winner board %) win-sets)]
+  (let [game-winner (some #(find-sequence-winner board %) win-combinations)]
     (or game-winner
         (board-full? board))))
-
