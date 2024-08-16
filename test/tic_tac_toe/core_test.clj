@@ -14,11 +14,36 @@
              [2 4 6]}
            (set game/win-combinations))))
 
+  (testing "dynamic row wining position"
+    (is (= [[0 1 2] [3 4 5] [6 7 8]]
+           (game/line-win-combinations 3))))
+
+  (testing "dynamic column wining position"
+    (is (= [[0 3 6] [1 4 7] [2 5 8]]
+           (game/column-win-combinations 3))))
+
+  (testing "dynamic diagonal wining positions"
+    (is (= [[0 4 8]
+            [2 4 6]]
+           (game/diagonal-win-combinations 3))))
+
+  (testing "dynamic wining positions"
+    (is (= [[0 1 2] [3 4 5] [6 7 8]
+            [0 3 6] [1 4 7] [2 5 8]
+            [0 4 8]
+            [2 4 6]]
+
+           (game/all-win-combinations 3))))
+
   (testing "board allocation"
     (is (= [nil nil nil
             nil nil nil
             nil nil nil]
            (game/new-game-board))))
+
+  (testing "random board size"
+    (is (= (repeat 16 nil)
+           (game/new-game-board 4))))
 
   (testing "board-full? returns true when the game board is filled by the players"
     (let [game-board [:x :o :x :o :x :x :o :x :x]]
